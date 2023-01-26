@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Details {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "Details_Id" ,updatable = false )
+     @Column(updatable = false )
     private int detailsId;
     @Column(nullable = false, length = 120,unique = true)
     private String email;
@@ -17,6 +17,13 @@ public class Details {
     private String name;
     @Column(nullable = false)
     private LocalDate birthDate;
+     @OneToOne
+     @JoinColumn(name="app_user_app_user_id")
+    private AppUser appUser;
+
+
+    public Details() {
+    }
 
     public Details(String email, String name, LocalDate birthDate) {
         this.email = email;

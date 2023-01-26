@@ -16,6 +16,8 @@ public class AppUser {
     private String password;
     @Column(name = "reg_date")
     private LocalDate registrationDate;
+    @OneToOne(cascade = {CascadeType.ALL})
+    @JoinColumn(name = "details_details_id")
     private Details details;
 
     public AppUser(int appUserId, String userName, String password, LocalDate registrationDate, Details details) {
